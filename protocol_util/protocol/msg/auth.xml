@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<item name="Login" type="request" cmd="0x10001" desc="登录请求">
+		<prop name="platId" type="short" desc="登录平台" />
+		<prop name="serverId" type="int" desc="服务器ID" />
+		<prop name="openId" type="string" desc="玩家第三方ID" />
+		<prop name="token" type="string" desc="通行证" />
+		
+	</item>
+	<item name="Login" type="response" cmd="0x10001" desc="登录返回">
+		<prop name="platId" type="short" desc="登录平台" />
+		<prop name="serverId" type="int" desc="服务器ID" />
+		<prop name="openId" type="string" desc="玩家第三方ID" />
+		<prop name="token" type="string" desc="通行证" />
+		<prop name="uid" type="string" desc="玩家ID" />
+	</item>
+</root>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<item name="PackInit" type="request" cmd="0x40001" desc="包裹初始化">
+		<prop name="type" type="short" desc="包裹类型" />
+	</item>
+	<item name="PackInit" type="response" cmd="0x40001" desc="包裹初始化">
+		<prop name="packs" type="PackData[]" />
+	</item>
+	<item name="PackMove" type="request" cmd="0x40002" desc="物品移动">
+		<prop name="type0" type="short" desc="移动源包裹类型" />
+		<prop name="index0" type="short" desc="移动源包裹索引" />
+		<prop name="insId0" type="string" desc="移动源包裹物品唯一ID" />
+		<prop name="type1" type="short" desc="移动目标包裹类型" />
+		<prop name="index1" type="short" desc="移动目标包裹索引" />
+		<prop name="insId1" type="string" desc="移动目标包裹物品唯一ID" />
+	</item>
+	<item name="PackMove" type="response" cmd="0x40002" desc="物品移动">
+		<prop name="type0" type="short" desc="移动源包裹类型" />
+		<prop name="index0" type="short" desc="移动源包裹索引" />
+		<prop name="insId0" type="string" desc="移动源包裹物品唯一ID" />
+		<prop name="type1" type="short" desc="移动目标包裹类型" />
+		<prop name="index1" type="short" desc="移动目标包裹索引" />
+		<prop name="insId1" type="string" desc="移动目标包裹物品唯一ID" />
+	</item>
+	<item name="PackDelete" type="request" cmd="0x40003" desc="物品删除（丢弃）">
+		<prop name="type" type="short" desc="包裹类型" />
+		<prop name="index" type="short" desc="包裹索引" />
+		<prop name="insId" type="string" desc="包裹物品唯一ID" />
+	</item>
+	<item name="PackDelete" type="response" cmd="0x40003" desc="物品删除（丢弃）">
+		<prop name="type" type="short" desc="包裹类型" />
+		<prop name="index" type="short" desc="包裹索引" />
+		<prop name="insId" type="string" desc="包裹物品唯一ID(检查用)" />
+	</item>
+	<item name="PackSell" type="request" cmd="0x40004" desc="物品出售">
+		<prop name="type" type="short" desc="包裹类型" />
+		<prop name="index" type="short" desc="包裹索引" />
+		<prop name="insId" type="string" desc="包裹物品唯一ID(检查用)" />
+	</item>
+	<item name="PackSell" type="response" cmd="0x40004" desc="物品出售">
+		<prop name="type" type="short" desc="包裹类型" />
+		<prop name="index" type="short" desc="包裹索引" />
+		<prop name="insId" type="string" desc="包裹物品唯一ID(检查用)" />
+	</item>
+	<item name="PackAdd" type="response" cmd="0x40005" desc="物品生成">
+		<prop name="type" type="short" desc="包裹类型" />
+		<prop name="index" type="short" desc="包裹索引" />
+		<prop name="item" type="ItemData" desc="物品" />
+	</item>
+</root>

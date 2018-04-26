@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	
+	<item name="AttributesData" desc="属性">
+		<prop name="cfgId" type="u32" desc="配置表ID" />
+		<prop name="value" type="u64" />
+	</item>
+
+	<item name="ItemData" desc="物品">
+		<prop name="insId" type="string" desc="唯一ID" />
+		<prop name="cfgId" type="u32" desc="配置表ID" />
+		<prop name="type" type="string" desc="分类" />
+		<prop name="createTime" type="u64" desc="创建时间" />
+	</item>
+
+	<item name="EquipData" parent="ItemData" desc="武器">
+		<prop name="strenthLv" type="u32" desc="唯一ID" />
+		<prop name="attributes" type="AttributesData[]" desc="属性" />
+	</item>
+
+	<item name="PackData">
+		<prop name="type" type="short" desc="唯一ID" />
+		<prop name="openLength" type="short" desc="开启长度" />
+		<prop name="itemList" type="GridData[]" />
+	</item>
+
+	<item name="GridData">
+		<prop name="index" type="short" desc="序号" />
+		<prop name="item" type="ItemData" desc="唯一ID" />
+	</item>
+
+	<item name="RoleData">
+		<prop name="insId" type="string" desc="唯一ID" />
+		<prop name="profId" type="u32" desc="职业ID" />
+		<prop name="serverId" type="short" desc="服务器ID" />
+		<prop name="name" type="string" desc="姓名" />
+		<prop name="level" type="u32" desc="等级" />
+		<prop name="exp" type="u64" desc="经验" />
+		<prop name="attributes" type="AttributesData[]" desc="属性" />
+	</item>
+
+</root>

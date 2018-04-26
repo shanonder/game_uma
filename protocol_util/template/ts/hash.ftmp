@@ -1,0 +1,14 @@
+class ProtocolHash{
+    public static Readers:Function[] = [];
+    public static Writers:Function[] = [];
+    public static Adapter:any[] = [];
+    public static registHashes():void{
+{@read}
+{@write}
+
+{@adapter}
+    }
+}
+
+
+

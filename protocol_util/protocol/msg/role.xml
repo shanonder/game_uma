@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<item name="RoleCreate" type="request" cmd="0x30001" desc="创建角色">
+		<prop name="name" type="string" desc="角色姓名"/>
+		<prop name="profId" type="short" desc="职业id"/>
+	</item>
+	<item name="RoleCreate" type="response" cmd="0x30001" desc="创建角色  {state:200,成功 201:姓名重复 ,202:包含不可用字}">
+	</item>
+	<item name="RoleEnterWorld" type="response" cmd="0x30002" desc="进入场景">
+		<prop name="mapId" type="short" />
+		<prop name="posX" type="u64" />
+		<prop name="posY" type="u64" />
+		<prop name="role" type="RoleData" desc="角色信息" />
+	</item>
+</root>
