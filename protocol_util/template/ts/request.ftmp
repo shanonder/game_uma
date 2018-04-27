@@ -1,12 +1,10 @@
-
-    static {@name} ({@param}){
-        /**
+    /**
 {@desc}
-         */
-
+     */
+    static {@name} ({@param}){
         const msg:MessageVO = Protocol.msg;
         {@byte}
         msg.cmd = {@cmd};
- {@encode}
+{@encode}
         Protocol.sendMessage(msg);
     }

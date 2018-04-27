@@ -232,8 +232,8 @@ def _scanReqNode(children,target):
                 name = child.getAttribute("name")
                 pType = child.getAttribute("type")
                 desc = child.getAttribute("desc")
-                target["encode"] += _writeParam(name,pType)
-                target["desc"] += "\t\t * @param " + name + " " + desc + "\n"
+                target["encode"] += _writeParam(name,pType,"\t\t")
+                target["desc"] += "\t * @param " + name + " " + desc + "\n"
                 target["param"] += name + ":" + _t2cType(pType) + " , "
     target["encode"] = target["encode"][:-1]
     target["desc"] = target["desc"][:-1]
@@ -276,7 +276,7 @@ for root , dirs , files in os.walk(_msgPath):
                                 "cmd":cmd,
                                 "param":"",
                                 "encode":"",
-                                "desc":"\t\t * " + desc + "\n",
+                                "desc":"\t * " + desc + "\n",
                                 "byte":""
                             }
                             _scanReqNode(n.childNodes,obj)

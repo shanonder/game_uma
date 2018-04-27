@@ -1,8 +1,7 @@
+/**
+ * {@desc}
+ */
 class {@name}{@extend}{
-    /**
-     * {@desc}
-     */
-
 {@param}
     public static readByte(byte:Byte , data?:{@name}):{@name}{
         if(!data) data = new {@name}();
