@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icday.game.databases.mappers.ItemDOMapper" >
+  <resultMap id="BaseResultMap" type="com.icday.game.databases.models.ItemDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="cfg_id" property="cfgId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.icday.game.databases.models.ItemDO" extends="BaseResultMap" >
+    <result column="props" property="props" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cfg_id, create_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    props
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_item
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_item
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.icday.game.databases.models.ItemDO" >
+    insert into tb_item (id, cfg_id, create_time, 
+      props)
+    values (#{id,jdbcType=VARCHAR}, #{cfgId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{props,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icday.game.databases.models.ItemDO" >
+    insert into tb_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cfgId != null" >
+        cfg_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="props != null" >
+        props,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgId != null" >
+        #{cfgId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="props != null" >
+        #{props,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icday.game.databases.models.ItemDO" >
+    update tb_item
+    <set >
+      <if test="cfgId != null" >
+        cfg_id = #{cfgId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="props != null" >
+        props = #{props,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.icday.game.databases.models.ItemDO" >
+    update tb_item
+    set cfg_id = #{cfgId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      props = #{props,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icday.game.databases.models.ItemDO" >
+    update tb_item
+    set cfg_id = #{cfgId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

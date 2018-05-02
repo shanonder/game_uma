@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icday.game.databases.mappers.RoleDOMapper" >
+  <resultMap id="BaseResultMap" type="com.icday.game.databases.models.RoleDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="exp" property="exp" jdbcType="INTEGER" />
+    <result column="skin" property="skin" jdbcType="INTEGER" />
+    <result column="mapid" property="mapid" jdbcType="INTEGER" />
+    <result column="pos_x" property="posX" jdbcType="INTEGER" />
+    <result column="pos_y" property="posY" jdbcType="INTEGER" />
+    <result column="face_to" property="faceTo" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="last_logout_time" property="lastLogoutTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.icday.game.databases.models.RoleDO" extends="BaseResultMap" >
+    <result column="grid" property="grid" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, name, profession, level, exp, skin, mapid, pos_x, pos_y, face_to, create_time, 
+    last_login_time, last_logout_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    grid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_role
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_role
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.icday.game.databases.models.RoleDO" >
+    insert into tb_role (id, uid, name, 
+      profession, level, exp, 
+      skin, mapid, pos_x, 
+      pos_y, face_to, create_time, 
+      last_login_time, last_logout_time, grid
+      )
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{exp,jdbcType=INTEGER}, 
+      #{skin,jdbcType=INTEGER}, #{mapid,jdbcType=INTEGER}, #{posX,jdbcType=INTEGER}, 
+      #{posY,jdbcType=INTEGER}, #{faceTo,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLogoutTime,jdbcType=TIMESTAMP}, #{grid,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.icday.game.databases.models.RoleDO" >
+    insert into tb_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="exp != null" >
+        exp,
+      </if>
+      <if test="skin != null" >
+        skin,
+      </if>
+      <if test="mapid != null" >
+        mapid,
+      </if>
+      <if test="posX != null" >
+        pos_x,
+      </if>
+      <if test="posY != null" >
+        pos_y,
+      </if>
+      <if test="faceTo != null" >
+        face_to,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="lastLogoutTime != null" >
+        last_logout_time,
+      </if>
+      <if test="grid != null" >
+        grid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="exp != null" >
+        #{exp,jdbcType=INTEGER},
+      </if>
+      <if test="skin != null" >
+        #{skin,jdbcType=INTEGER},
+      </if>
+      <if test="mapid != null" >
+        #{mapid,jdbcType=INTEGER},
+      </if>
+      <if test="posX != null" >
+        #{posX,jdbcType=INTEGER},
+      </if>
+      <if test="posY != null" >
+        #{posY,jdbcType=INTEGER},
+      </if>
+      <if test="faceTo != null" >
+        #{faceTo,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogoutTime != null" >
+        #{lastLogoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grid != null" >
+        #{grid,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icday.game.databases.models.RoleDO" >
+    update tb_role
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="exp != null" >
+        exp = #{exp,jdbcType=INTEGER},
+      </if>
+      <if test="skin != null" >
+        skin = #{skin,jdbcType=INTEGER},
+      </if>
+      <if test="mapid != null" >
+        mapid = #{mapid,jdbcType=INTEGER},
+      </if>
+      <if test="posX != null" >
+        pos_x = #{posX,jdbcType=INTEGER},
+      </if>
+      <if test="posY != null" >
+        pos_y = #{posY,jdbcType=INTEGER},
+      </if>
+      <if test="faceTo != null" >
+        face_to = #{faceTo,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogoutTime != null" >
+        last_logout_time = #{lastLogoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grid != null" >
+        grid = #{grid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.icday.game.databases.models.RoleDO" >
+    update tb_role
+    set uid = #{uid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      exp = #{exp,jdbcType=INTEGER},
+      skin = #{skin,jdbcType=INTEGER},
+      mapid = #{mapid,jdbcType=INTEGER},
+      pos_x = #{posX,jdbcType=INTEGER},
+      pos_y = #{posY,jdbcType=INTEGER},
+      face_to = #{faceTo,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_logout_time = #{lastLogoutTime,jdbcType=TIMESTAMP},
+      grid = #{grid,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icday.game.databases.models.RoleDO" >
+    update tb_role
+    set uid = #{uid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      exp = #{exp,jdbcType=INTEGER},
+      skin = #{skin,jdbcType=INTEGER},
+      mapid = #{mapid,jdbcType=INTEGER},
+      pos_x = #{posX,jdbcType=INTEGER},
+      pos_y = #{posY,jdbcType=INTEGER},
+      face_to = #{faceTo,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_logout_time = #{lastLogoutTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
